@@ -1,0 +1,19 @@
+<!-- flight_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Details</title>
+</head>
+<body>
+    <h2>{{ flight.origin }} to {{ flight.destination }}</h2>
+    <p>Departure: {{ flight.departure_date }}</p>
+    <p>Price: ${{ price }}</p>
+    <form method="post" action="{% url 'booking_create' %}">
+        {% csrf_token %}
+        <input type="hidden" name="flight_id" value="{{ flight.id }}">
+        <button type="submit" class="bg-accent text-accent-foreground px-4 py-2 rounded">Забронировать</button>
+    </form>
+</body>
+</html>

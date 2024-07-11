@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .advertisement {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .advertisement img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .advertisement h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .advertisement p {
+            color: #555;
+        }
+        #advertisement-container {
+            padding: 20px;
+        }
+    </style>
+
+
+
+{% if advertisement %}
+<div class="advertisement">
+    <h2>{{ advertisement.title }}</h2>
+    <img src="{{ advertisement.image.url }}" alt="{{ advertisement.title }}">
+    <p>{{ advertisement.description }}</p>
+</div>
+{% else %}
+<p>No advertisements available at the moment.</p>
+{% endif %}
+
+
+
+
+    <script>
+        function loadAdvertisement() {
+            fetch("{% url 'random_advertisement' %}")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('advertisement-container').innerHTML = html;
+                });
+        }
+
+        setInterval(loadAdvertisement, 30000); // Обновляем рекламу каждые 30 секунд
+        window.onload = loadAdvertisement; // Загружаем рекламу при загрузке страницы
+    </script>
+</head>
+<body>
+    <div id="advertisement-container"></div>
+</body>
+</html>

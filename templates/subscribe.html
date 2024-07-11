@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Subscription</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center">Choose Subscription</h1>
+        <form method="post" action="{% url 'subscribe' %}" class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Continue to Payment</button>
+        </form>
+    </div>
+</body>
+</html>

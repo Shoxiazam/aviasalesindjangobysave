@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        form input[type="text"],
+        form input[type="date"],
+        form select {
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        form button:hover {
+            background-color: #45a049;
+        }
+        .error-msg {
+            color: red;
+            margin-top: 10px;
+        }
+        .booking-details {
+            margin-top: 20px;
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buy Ticket for Booking {{ booking.id }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    {% if form.errors %}
+        <div class="error-msg">
+            <h2>Form Errors:</h2>
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    <li>{{ field }}: {{ errors }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="booking-details">
+        <h2>Booking Details:</h2>
+        <p><strong>User:</strong> {{ booking.user.username }}</p>
+        <p><strong>Flight:</strong> {{ booking.flight }}</p>
+        <p><strong>Hotel:</strong> {{ booking.hotel }}</p>
+        <p><strong>Apartment:</strong> {{ booking.apartment }}</p>
+        <p><strong>Booking Type:</strong> {{ booking.booking_type }}</p>
+        <p><strong>Guest Name:</strong> {{ booking.guest_name }}</p>
+        <p><strong>Check In:</strong> {{ booking.check_in }}</p>
+        <p><strong>Check Out:</strong> {{ booking.check_out }}</p>
+        <p><strong>Guests:</strong> {{ booking.guests }}</p>
+        <p><strong>Total Cost:</strong> {{ booking.total_cost }}</p>
+        <p><strong>Cashback Amount:</strong> {{ cashback_amount }}</p>
+        <p><strong>Final Price:</strong> {{ final_price }}</p>
+    </div>
+</body>
+</html>

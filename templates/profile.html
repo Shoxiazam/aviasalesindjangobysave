@@ -1,0 +1,258 @@
+<!-- profile.html -->
+
+<!DOCTYPE html>
+<html lang="en"  class="{% if profile.theme_preference == 'dark' %}dark{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Пример стилей для красивого отображения профиля */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .profile-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        .profile-info {
+            text-align: center;
+        }
+        .bio {
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+    .booking-history {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .booking-history h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .booking-item {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .booking-item p {
+        margin: 5px 0;
+        color: black; /* Черный текст */
+    }
+
+    .booking-item a {
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    .booking-item a:hover {
+        text-decoration: underline;
+    }
+
+
+        
+    </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+          <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+          <script type="text/javascript">
+              window.tailwind.config = {
+                  darkMode: ['class'],
+                  theme: {
+                      extend: {
+                          colors: {
+                              border: 'hsl(var(--border))',
+                              input: 'hsl(var(--input))',
+                              ring: 'hsl(var(--ring))',
+                              background: 'hsl(var(--background))',
+                              foreground: 'hsl(var(--foreground))',
+                              primary: {
+                                  DEFAULT: 'hsl(var(--primary))',
+                                  foreground: 'hsl(var(--primary-foreground))'
+                              },
+                              secondary: {
+                                  DEFAULT: 'hsl(var(--secondary))',
+                                  foreground: 'hsl(var(--secondary-foreground))'
+                              },
+                              destructive: {
+                                  DEFAULT: 'hsl(var(--destructive))',
+                                  foreground: 'hsl(var(--destructive-foreground))'
+                              },
+                              muted: {
+                                  DEFAULT: 'hsl(var(--muted))',
+                                  foreground: 'hsl(var(--muted-foreground))'
+                              },
+                              accent: {
+                                  DEFAULT: 'hsl(var(--accent))',
+                                  foreground: 'hsl(var(--accent-foreground))'
+                              },
+                              popover: {
+                                  DEFAULT: 'hsl(var(--popover))',
+                                  foreground: 'hsl(var(--popover-foreground))'
+                              },
+                              card: {
+                                  DEFAULT: 'hsl(var(--card))',
+                                  foreground: 'hsl(var(--card-foreground))'
+                              },
+                          },
+                      }
+                  }
+              }
+          </script>
+          <style type="text/tailwindcss">
+              @layer base {
+                  :root {
+                      --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+                  }
+                  .dark {
+                      --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+                  }
+              }
+  
+  html{
+      color: black;
+  }
+  
+     
+          </style>
+
+</head>
+
+
+<body>
+    <div class="bg-blue-500 text-white min-h-screen p-4">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex items-center space-x-2">
+            <img src="https://placehold.co/40x40" alt="logo" class="h-10 w-10"/>
+            <span class="text-xl font-bold"><a href="{% url 'search' %}">aviasales</a></span>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button class="text-white">?</button>
+            <button class="text-white">%</button>
+            <button class="text-white">Мой кэшбэк</button>
+            <button class="text-white">UZS · RU</button>
+         </div>
+        </div>
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold">Поиск дешёвых авиабилетов</h1>
+          <p class="text-lg">16 лет помогаем вам экономить</p>
+        </div>
+        <div class="flex justify-center space-x-4 mb-8">
+          <button class="bg-white text-blue-500 px-4 py-2 rounded-lg font-bold flex items-center space-x-2">
+            <img src="https://placehold.co/20x20" alt="plane" class="h-5 w-5"/>
+            <span>Авиабилеты</span>
+          </button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold"><a href="{% url 'hotels' %}">Отели</a></button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold"><a href="{% url 'search_apartments' %}">Апартаменты</a></button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold"><a href="{% url 'city_list' %}">uyo_buyo</a></button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold"><a href="{% url 'subscribe' %}">Подписки</a></button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold"><a href="{% url 'profile' %}">Профиль</a></button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold"><a href="{% url 'logout' %}">logout</a></button>
+          
+        </div>
+    <div class="profile-card">
+        <div class="profile-info">
+            {% if profile.avatar %}
+                <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatar">
+            {% else %}
+                <div class="avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="150" height="150"><path fill="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="12" fill="#ccc"/><path fill="#757575" d="M11 17.93c-4.24-.49-8-2.37-10-5.18V21h20v-8.25c-2.63 2.5-6.42 4.21-10 4.93zM22 3H2v4.97c0 1.1.45 2.1 1.18 2.83 1.78 1.77 5.16 2.85 8.82 2.85 3.66 0 7.04-1.08 8.82-2.85.73-.73 1.18-1.73 1.18-2.83V3z"/></svg>
+                </div>
+            {% endif %}
+            <h2 style="color: black;">{{ user.username }}</h2>
+            <p style="color: black;">{{ user.email }}</p>
+            {% if profile.date_of_birth %}
+                <p style="color: black;" >Date of Birth: {{ profile.date_of_birth }}</p>
+            {% endif %}
+            {% if profile.phone_number %}
+                <p style="color: black;" >Phone: {{ profile.phone_number }}</p>
+            {% endif %}
+            {% if profile.bio %}
+                <p style="color: black;" class="bio">{{ profile.bio }}</p>
+            {% endif %}
+
+            <!-- История бронировок -->
+            <div class="booking-history">
+                <h3 style="color: black;">История бронировок</h3>
+                {% if bookings %}
+                    {% for booking in bookings %}
+                        <div class="booking-item">
+                            <p><strong>Дата бронирования:</strong> {{ booking.booking_date }}</p>
+                            <p><strong>Тип бронировки:</strong> {{ booking.booking_type }}</p>
+                            <p><strong>Кэшбэк:</strong> {{ booking.cashback_amount }}</p>
+                            <p>
+                                <a href="{% url 'booking_edit' booking.id %}" style="color: blue;">Редактировать</a> | 
+                                <a href="{% url 'booking_cancel' booking.id %}" style="color: red;">Отменить</a>
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="color: black;">У вас пока нет бронировок.</p>
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+
+</html>

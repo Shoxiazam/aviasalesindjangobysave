@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Success</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center text-green-600">Booking Successful!</h1>
+        <div class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto text-center">
+            <p class="text-xl font-semibold">Your cashback amount is:</p>
+            <p class="text-3xl font-bold text-green-500">{{ cashback_amount }}</p>
+            <span class="text-xl font-bold"><a href="{% url 'search' %}">aviasales</a></span>
+        </div>
+    </div>
+</body>
+</html>

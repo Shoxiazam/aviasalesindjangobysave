@@ -1,0 +1,22 @@
+<!-- purchase_info.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Purchase Information</title>
+</head>
+<body>
+    <h2>Enter Purchase Information</h2>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Form fields for user's purchase information (e.g., card details, personal info) -->
+        <label for="card_number">Card Number:</label>
+        <input type="text" id="card_number" name="card_number" required>
+        <!-- Additional fields as needed -->
+
+        <button type="submit">Complete Purchase</button>
+    </form>
+</body>
+</html>

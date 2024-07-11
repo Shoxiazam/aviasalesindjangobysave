@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Profile</title>
+    <!-- Подключение Bootstrap (если используется) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Дополнительные стили CSS -->
+    <style>
+        /* Дополнительные стили могут быть добавлены здесь */
+        body {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Вывод ошибок формы -->
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            
+            <!-- Вывод успешного сообщения, если есть -->
+            {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <!-- Поля имя пользователя и email (отключены, так как уже зарегистрированы) -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" class="form-control" disabled>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" class="form-control" disabled>
+            </div>
+            
+            <!-- Поля профиля -->
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" required class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="avatar">Avatar:</label>
+                <input type="file" id="avatar" name="avatar" class="form-control-file">
+            </div>
+            
+            <div class="form-group">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="4" cols="50" class="form-control"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" class="form-control">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create Profile</button>
+        </form>
+    </div>
+    
+    <!-- Подключение скриптов и Bootstrap JS (если нужно) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

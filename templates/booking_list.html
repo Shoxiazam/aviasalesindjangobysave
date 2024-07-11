@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking List</title>
+</head>
+<body>
+    <h1>Booking List</h1>
+    <ul>
+        {% for booking in bookings %}
+        <li>
+            <strong>{{ booking.get_booking_type_display }}</strong> by {{ booking.guest_name }}<br>
+            Check-in: {{ booking.check_in }}<br>
+            Check-out: {{ booking.check_out }}<br>
+            Guests: {{ booking.guests }}<br>
+        </li>
+        {% empty %}
+        <li>No bookings yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'booking_create' %}">Create a new booking</a>
+
+
+    {% for item in results %}
+    <li class="p-4 bg-white rounded-lg shadow mb-4" style="color: black;">
+        <strong>{{ item.flight.origin }}</strong> to <strong>{{ item.flight.destination }}</strong> on <strong>{{ item.flight.departure_date }}</strong> for <strong>{{ item.price }}</strong>
+        <a href="{% url 'booking_create' %}?flight_id={{ item.flight.id }}" class="bg-accent text-accent-foreground px-4 py-2 rounded ml-2">Забронировать</a>
+    </li>
+    {% empty %}
+    <li class="p-4 bg-white rounded-lg shadow mb-4" style="color: black;">Нет доступных рейсов</li>
+    {% endfor %}
+</body>
+</html>
